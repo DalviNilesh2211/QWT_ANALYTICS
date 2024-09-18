@@ -12,3 +12,4 @@ sources:
       - name: OrderDetails
       - name: office
       - name: shipments      
+      - name: suppliers      

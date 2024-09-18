@@ -3,7 +3,9 @@
         materialized='table', schema='transforming'
     )
 }}
-select productid,productname,supplierid,categoryid,quantityperunit, 
+select productid,
+productname,supplierid,
+categoryid,quantityperunit, 
 unitprice,unitcost,
 unitsonorder,
 unitsinstock,
