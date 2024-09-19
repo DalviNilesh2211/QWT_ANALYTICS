@@ -16,5 +16,3 @@ models:
       - name: ADDRESS
       - name: POSTALCODE
       - name: STATEPROVINCE
-  - name: stg_products
-    description: This table has basic information about a products
