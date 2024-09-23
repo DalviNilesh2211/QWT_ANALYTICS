@@ -1,6 +1,6 @@
 {{
     config(
-        materialized='table', schema='transforming'
+        materialized='table', schema='transforming', pre_hook=['grant select on table staging.stg_customers to role public']
     )
 }}
 select CUSTOMERID, COMPANYNAME, CONTACTNAME, CITY, COUNTRY, DIVISIONID, ADDRESS, FAX, 

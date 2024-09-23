@@ -43,3 +43,7 @@ models:
     # Applies to all files under models/example/
     staging:
       +materialized: table
+  +pre-hook:
+    - "insert into audit.qwt_audit_info values ( '{{this}}', current_timestamp(), null , null)"
+  +post-hook:
+    - "update audit.qwt_audit_info set endtime=current_timestamp(), duration =datediff('second',  current_timestamp(),starttime) where modelname= '{{this}}' and endtime is null"  
