@@ -11,6 +11,7 @@ profile: 'default'
 
 vars :
   city : "'Paris"
+  dbt_dq_tool_schema : DQ
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
@@ -26,8 +27,8 @@ target-path: "target"  # directory which will store compiled SQL files
 clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
-
-
+tests:
+  +severity: warn  # all tests
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
@@ -39,6 +40,8 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
+  dbt_artifacts:
+    +schema: AUDIT_LOGS_ANALYSIS
   qwt_analytics:
     # Applies to all files under models/example/
     staging:
@@ -47,3 +50,6 @@ models:
     - "insert into audit.qwt_audit_info values ( '{{this}}', current_timestamp(), null , null)"
   +post-hook:
     - "update audit.qwt_audit_info set endtime=current_timestamp(), duration =datediff('second',  current_timestamp(),starttime) where modelname= '{{this}}' and endtime is null"  
+
+on-run-start: "grant ownership on table audit.qwt_audit_info to role public"
+on-run-end: "{{ dq_tools.store_test_results(results) }}"
