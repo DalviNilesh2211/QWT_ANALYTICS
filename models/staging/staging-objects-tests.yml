@@ -2,12 +2,14 @@ version: 2
 
 models:
   - name: stg_customers
+    description: Details of the customers
     columns:
       - name: customer_id
         tests:
           - unique
           - not_null
   - name: stg_orders
+    description: Details of the orders
     tests:
       - dbt_utils.equal_rowcount:
           compare_model: ref('stg_products')
@@ -30,8 +32,10 @@ models:
               values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
 
   - name: stg_orderdetails
+    description: detailed transaction data for each other
     columns:
       - name: orderid
+        description: unique order id will be taken from the orders table
         tests:
           - relationships:
               to: ref('stg_customers')
