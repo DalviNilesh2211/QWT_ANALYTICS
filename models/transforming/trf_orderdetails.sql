@@ -1,6 +1,6 @@
 {{
     config(
-        materialized='table', schema='transforming'
+        materialized='table',  schema= env_var('DBT_TRNASFORMING_SCHEMA','transforming')
     )
 }}
 select od.*,
