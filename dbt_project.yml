@@ -40,6 +40,8 @@ tests:
 # using the `{{ config(...) }}` macro.
 
 models:
+  database : "{{ env_var('QWT_SOURCEDB','dbt_analytics') }}"
+  schema : "{{ env_var('QWT_STAGESCHEMA','staging') }}" 
   dbt_artifacts:
     +schema: AUDIT_LOGS_ANALYSIS
   qwt_analytics:

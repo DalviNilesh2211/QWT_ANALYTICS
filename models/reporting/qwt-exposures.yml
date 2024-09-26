@@ -8,7 +8,7 @@ exposures:
     description: top 10 sales in each city
     depends_on:
       - ref('fct_orders')
-      - ref('dim_employees')
+      - ref('dim_employee')
     owner:
       name : Nilesh
       email: nilesh.dalvi@cognizant.com
