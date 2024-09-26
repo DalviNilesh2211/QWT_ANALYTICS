@@ -1,4 +1,4 @@
-{{config(materialized='table' , schema = env_var('QWT_SOURCESCHEMA','STAGING')) }}
+{{config(materialized='table' , schema = env_var('DBT_SOURCESCHEMA','STAGING')) }}
 select get(xmlget(supplierinfo,'SupplierID'),'$')::number as SupplierID,
        get(xmlget(supplierinfo,'CompanyName'),'$')::varchar as CompanyName,
        get(xmlget(supplierinfo,'ContactName'),'$')::varchar as ContactName,
