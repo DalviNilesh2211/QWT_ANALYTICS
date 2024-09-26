@@ -1,0 +1,14 @@
+version: 2
+
+exposures:
+  - name: top10_sales_by_employees
+    type: dashboard
+    maturity : high
+    url: https://google.com
+    description: top 10 sales in each city
+    depends_on:
+      - ref('fct_orders')
+      - ref('dim_employee')
+    owner:
+      name : Nilesh
+      email: nilesh.dalvi@cognizant.com

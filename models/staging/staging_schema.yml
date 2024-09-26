@@ -1,0 +1,10 @@
+version: 2
+
+models:
+      - name: COMPANYNAME
+      - name: CITY
+      - name: COUNTRY
+      - name: DIVISIONID
+      - name: ADDRESS
+      - name: POSTALCODE
+      - name: STATEPROVINCE

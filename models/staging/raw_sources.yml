@@ -1,0 +1,15 @@
+version: 2
+ 
+sources:
+  - name: qwt_src
+    database: "{{ env_var('DBT_SOURCEDB','dbt_analytics') }}"  
+    schema: "{{ env_var('DBT_SOURCESCHEMA','raw') }}"    
+    tables:
+      - name: products
+      - name: customer
+      - name: employee
+      - name: orders
+      - name: OrderDetails
+      - name: office
+      - name: shipments      
+      - name: suppliers      
