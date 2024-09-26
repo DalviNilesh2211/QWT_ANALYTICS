@@ -1,6 +1,6 @@
 {{
     config(
-        materialized='incremental', unique_key=['orderid','lineno']
+        materialized='incremental', schema = env_var('DBT_STAGE_SCHEMA','STAGING'), unique_key=['orderid','lineno']
     )
 }}
 
